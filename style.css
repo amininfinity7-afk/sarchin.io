@@ -671,3 +671,30 @@ a.pp-pay:focus-visible{outline:2px solid #0046ff;outline-offset:2px}
   .svc-card{flex:0 0 52%;max-width:none;height:215px}
   .svc-card h3{font-size:15px}
 }
+
+/* ---- هم‌اندازه شدن دکمه حساب و آیکون سبد خرید ---- */
+.hdr-tools .hdr-cart,.hdr-tools .acct-btn{height:40px;box-sizing:border-box;border-radius:11px}
+.hdr-tools .hdr-cart{width:40px}
+.hdr-tools .acct-btn,.hdr-tools .acct-btn.logged{padding-block:0;line-height:1}
+.hdr-tools .acct-btn.logged{padding-inline:8px 10px}
+@media(max-width:860px){
+  .hdr-tools .hdr-cart,.hdr-tools .acct-btn{height:34px;border-radius:9px}
+  .hdr-tools .hdr-cart{width:34px}
+  .hdr-tools .acct-btn{padding-inline:12px}
+  .hdr-tools .acct-btn.logged{padding-inline:6px 10px}
+  .hdr-tools .acct-av{width:24px;height:24px}
+}
+
+/* ---- تقویم رزرو: روزهای قابل رزرو، انتخاب‌شده و ناوبری ماه ---- */
+.cal-t{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;width:100%}
+.cal-t span{display:block;width:100%;text-align:center}
+.cal-nav{position:absolute;top:50%;transform:translateY(-50%);width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:7px;border:1px solid #b9b3a8;background:#e4e0d8;color:#46423d;cursor:pointer;padding:0}
+.cal-next{left:0}
+.cal-prev{right:0}
+.cal-nav:disabled{opacity:.35;cursor:default}
+.cal-g i.x{background:#bfb9ae;color:#57524b;text-decoration:line-through;text-decoration-thickness:1.6px;cursor:not-allowed}
+.cal-g i.ok-d{background:#f3efe6;color:#2b2620;text-decoration:none;cursor:pointer;border:1px solid #c9973a66;transition:background .15s,transform .15s}
+.cal-g i.ok-d:hover{background:#ead9b3;transform:translateY(-1px)}
+.cal-g i.ok-d.sel{background:#c9973a;color:#fff;border-color:#c9973a}
+.cal-err{display:none;color:#b3261e;font-size:12.5px;margin:-8px 2px 14px}
+
