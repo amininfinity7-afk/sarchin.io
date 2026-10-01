@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#171310">
+  <title>آرایشگاه سرچین</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap hdr-in">
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="منو" aria-expanded="false" aria-controls="mainNav"><i></i><i></i><i></i></button>
+    <a class="brand-logo" href="#home" aria-label="آرایشگاه سرچین"><img src="logo.png" alt="لوگوی آرایشگاه سرچین"></a>
+    <nav class="main-nav" id="mainNav" aria-label="منوی اصلی">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="#home">خانه</a></li>
+        <li class="has-sub">
+          <button class="nav-link sub-toggle" type="button" aria-expanded="false">خدمات ما <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <ul class="sub-menu">
+            <li><a href="#services">اصلاح موی سر</a></li>
+            <li><a href="#services">اصلاح ریش</a></li>
+            <li><a href="#services">فر و سشوار</a></li>
+            <li><a href="#services">پیرایش داماد</a></li>
+            <li><a href="#services">رنگ و لایت</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link" href="#booking">رزرو نوبت</a></li>
+        <li><a class="nav-link" href="#about">درباره ما</a></li>
+        <li><a class="nav-link" href="#contact">تماس با ما</a></li>
+        <li class="phone-li"><a class="hdr-phone" href="tel:09055023999"><span>رزرو نوبت تلفنی</span><b dir="ltr">۰۹۰۵ ۵۰۲ ۳۹۹۹</b></a></li>
+      </ul>
+    </nav>
+    <div class="hdr-tools">
+    <button class="hdr-cart" id="cartFab" type="button" aria-label="سبد خرید"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.1L20 8H6"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg><span class="cart-count" id="cartCount" hidden>۰</span></button>
+    <div class="has-sub acct">
+        <button class="acct-btn" id="acctBtn" type="button" aria-expanded="false">
+          <span class="acct-av" id="acctAv" hidden></span>
+          <span class="acct-label" id="acctLabel">ورود / ثبت‌نام</span>
+          <svg class="acct-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true" hidden><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <ul class="sub-menu" id="acctMenu" hidden>
+          <li><a href="#booking">رزرو نوبت جدید</a></li>
+          <li><button type="button" id="logoutBtn">خروج از حساب</button></li>
+        </ul>
+    </div>
+    </div>
+    <a class="hdr-phone hdr-phone-m" href="tel:09055023999"><span>رزرو نوبت تلفنی</span><b dir="ltr">۰۹۰۵ ۵۰۲ ۳۹۹۹</b></a>
+  </div>
+</header>
+<div class="nav-backdrop" id="navBackdrop"></div>
+
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="hero-art">
+      <img class="barber-image" src="logo barber.png" alt="تصویر آرایشگر در حال اصلاح مو">
+    </div>
+
+    <div class="hero-copy">
+
+      <h1 class="font">آرایشگـاه<br><span>مردانه سرچین</span></h1>
+    
+  
+      <ul class="hero-stats">
+        <li><b>+۱۲</b> سال تجربه</li>
+        <li><b>+۲۰۰۰</b> مشتری</li>
+        <li><b>+۴</b> پرسنل</li>
+      </ul>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#booking">رزرو نوبت آنلاین</a>
+        <a class="btn btn-ghost" href="#services">مشاهده خدمات</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head"><h2 class="mc-heading">خدمات زیبایی سرچین</h2><p>هر خدمت با ابزار استریل‌شده و توسط آرایشگرهای باتجربه انجام می‌شود.</p></div>
+    <div class="svc-row">
+      <a class="svc-card" href="#booking" data-service="اصلاح موی سر"><img src="svc-haircut.jpg" alt="اصلاح موی سر" style="object-position:60% 50%" loading="lazy"><div class="svc-txt"><h3>اصلاح موی سر</h3><span class="svc-cta">برای رزرو نوبت کلیک کنید</span></div></a>
+      <a class="svc-card" href="#booking" data-service="اصلاح ریش"><img src="svc-beard.jpg" alt="اصلاح ریش" style="object-position:40% 50%" loading="lazy"><div class="svc-txt"><h3>اصلاح ریش</h3><span class="svc-cta">برای رزرو نوبت کلیک کنید</span></div></a>
+      <a class="svc-card" href="#booking" data-service="رنگ و لایت"><img src="svc-color.jpg" alt="رنگ و لایت" style="object-position:60% 50%" loading="lazy"><div class="svc-txt"><h3>رنگ و لایت</h3><span class="svc-cta">برای رزرو نوبت کلیک کنید</span></div></a>
+      <a class="svc-card" href="#booking" data-service="پیرایش داماد"><img src="svc-groom.jpg" alt="پیرایش داماد" style="object-position:50% 30%" loading="lazy"><div class="svc-txt"><h3>پیرایش داماد</h3><span class="svc-cta">برای رزرو نوبت کلیک کنید</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow mc-heading">دربـاره سرچیـن</p>
+      
+      <p>آرایشگاه سرچین سال‌هاست با تیمی از اصلاح‌گران حرفه‌ای، خدمات مردانه رو با استانداردی بالا ارائه می‌ده. هدف ما یک اصلاح دقیق، تمیز و متناسب با فرم صورت هر مشتریه، نه یک مدل تکراری.</p>
+      <ul>
+        <li>ابزار استریل‌شده برای هر مشتری</li>
+        <li>مشاوره مدل متناسب با فرم صورت</li>
+        <li>رزرو آنلاین بدون نیاز به تماس تلفنی</li>
+      </ul>
+    </div>
+    <div class="about-map" aria-label="موقعیت آرایشگاه سرچین">
+      <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="400" height="300" fill="#2a2119"/>
+        <g stroke="#3a2f24" stroke-width="14" fill="none" stroke-linecap="round">
+          <path d="M-10 90 L410 120"/><path d="M-10 210 L410 190"/><path d="M110 -10 L140 310"/><path d="M290 -10 L260 310"/>
+        </g>
+        <g stroke="#4a3c2d" stroke-width="2" fill="none"><path d="M-10 90 L410 120"/><path d="M-10 210 L410 190"/><path d="M110 -10 L140 310"/><path d="M290 -10 L260 310"/></g>
+        <g fill="#33281e"><rect x="150" y="130" width="100" height="50" rx="6"/><rect x="20" y="20" width="70" height="55" rx="6"/><rect x="310" y="30" width="70" height="60" rx="6"/><rect x="20" y="225" width="75" height="55" rx="6"/><rect x="310" y="215" width="70" height="60" rx="6"/></g>
+        <g transform="translate(200 120)"><path d="M0 0 C-22 -26 -22 -50 0 -50 C22 -50 22 -26 0 0Z" fill="#c9973a"/><circle cx="0" cy="-34" r="7" fill="#1f1811"/></g>
+      </svg>
+      <div class="map-label">کرج، خ برغان، خیابان گل‌محمدی</div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section id="products">
+  <div class="wrap">
+    <div class="head"><h2 class="mc-heading">محصولات سرچین</h2><p>محصولات مورد استفاده و مورد تأیید ما، قابل تهیه از آرایشگاه.</p></div>
+    <div class="prod-row">
+      <div class="prod-card" data-id="mz1931"><a class="pc-link" href="product.html?id=mz1931"><div class="pc-img"><img src="prod-mz1931 one.jpg" alt="موزر حرفه‌ای مدل Mz1931" loading="lazy"></div></a><h3><a href="product.html?id=mz1931">موزر حرفه‌ای مدل Mz1931</a></h3><span class="pc-v">&nbsp;</span><div class="pc-price">۷ میلیون و ۴۵۷ هزار تومان</div><button class="pc-add" type="button" data-add="mz1931">افزودن به سبد</button></div>
+      <div class="prod-card" data-id="v001"><a class="pc-link" href="product.html?id=v001"><div class="pc-img"><img src="Premium Black Barber Clipper on Charging Stand one.jpg" alt="موزر مدل وی‌جی V001" loading="lazy"></div></a><h3><a href="product.html?id=v001">موزر مدل وی‌جی V001</a></h3><span class="pc-v">&nbsp;</span><div class="pc-price">۱۰ میلیون و ۱۷۰ هزار تومان</div><button class="pc-add" type="button" data-add="v001">افزودن به سبد</button></div>
+      <div class="prod-card" data-id="neo1809"><a class="pc-link" href="product.html?id=neo1809"><div class="pc-img"><img src="prod-neo1809 one.jpg" alt="موزر مدل Neo1809" loading="lazy"></div></a><h3><a href="product.html?id=neo1809">موزر مدل Neo1809</a></h3><span class="pc-v">&nbsp;</span><div class="pc-price">۵ میلیون و ۷۶۰ هزار تومان</div><button class="pc-add" type="button" data-add="neo1809">افزودن به سبد</button></div>
+      <div class="prod-card" data-id="dryer"><a class="pc-link" href="product.html?id=dryer"><div class="pc-img"><img src="prod-dryer.jpg" alt="سشوار مدل 2400T" loading="lazy"></div></a><h3><a href="product.html?id=dryer">سشوار مدل 2400T</a></h3><span class="pc-v">&nbsp;</span><div class="pc-price">۸ میلیون و ۷۸۷ هزار تومان</div><button class="pc-add" type="button" data-add="dryer">افزودن به سبد</button></div>
+      <div class="prod-card" data-id="spray"><a class="pc-link" href="product.html?id=spray"><div class="pc-img"><img src="prod-spray.jpg" alt="اسپری مو پرسونال" loading="lazy"></div></a><h3><a href="product.html?id=spray">اسپری مو پرسونال</a></h3><span class="pc-v">حجم ۳۰۰ میلی‌لیتر</span><div class="pc-price">۹۴۴ هزار تومان</div><button class="pc-add" type="button" data-add="spray">افزودن به سبد</button></div>
+      <div class="prod-card" data-id="agiva"><a class="pc-link" href="product.html?id=agiva"><div class="pc-img"><img src="prod-agiva.jpg" alt="ژل و واکس مو آگیو" loading="lazy"></div></a><h3><a href="product.html?id=agiva">ژل و واکس مو آگیو</a></h3><span class="pc-v">حجم ۲۰۰ میلی‌لیتر</span><div class="pc-price">۵۱۰ هزار تومان</div><button class="pc-add" type="button" data-add="agiva">افزودن به سبد</button></div>
+      <div class="prod-card" data-id="mojito"><a class="pc-link" href="product.html?id=mojito"><div class="pc-img"><img src="prod-mojito.jpg" alt="ژل مو و مرطوب‌کننده موهیتو" loading="lazy"></div></a><h3><a href="product.html?id=mojito">ژل مو و مرطوب‌کننده موهیتو</a></h3><span class="pc-v">حجم ۳۵۰ میلی‌لیتر</span><div class="pc-price">۴۱۲ هزار تومان</div><button class="pc-add" type="button" data-add="mojito">افزودن به سبد</button></div>
+      <div class="prod-card" data-id="mousse"><a class="pc-link" href="product.html?id=mousse"><div class="pc-img"><img src="prod-mousse.jpg" alt="موس حالت‌دهنده اسکایلر" loading="lazy"></div></a><h3><a href="product.html?id=mousse">موس حالت‌دهنده اسکایلر</a></h3><span class="pc-v">حجم ۲۰۰ میلی‌لیتر</span><div class="pc-price">۳۹۷ هزار تومان</div><button class="pc-add" type="button" data-add="mousse">افزودن به سبد</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="hours" id="hours">
+  <div class="wrap">
+    <div class="head"><h2 class="mc-heading">ساعات کاری سرچین</h2><p>هر روز هفته به‌جز جمعه، آماده پذیرایی از شما هستیم.</p></div>
+    <table>
+      <tr><td>شنبه تا چهارشنبه</td><td>۱۱:۰۰ صبح تا ۲۳:۰۰</td></tr>
+      <tr><td>پنجشنبه</td><td>۱۴:۰۰ تا ۲۱:۰۰</td></tr>
+      <tr><td>جمعه</td><td class="closed">تعطیل</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="wrap">
+    <div class="head"><h2 class="mc-heading">رزرو نوبت</h2></div>
+    <div class="booking-box">
+      <p class="bf-title">اطلاعات خود را وارد کنید</p>
+      <form class="bookform" id="bookform">
+        <div class="bf-grid">
+          <div class="f"><label for="name">نام و نام خانوادگی</label><input id="name" required placeholder="مثلاً علی رضایی"></div>
+          <div class="f"><label for="phone">شماره تلفن شما</label><input id="phone" class="ltr-field" required placeholder="09xxxxxxxxx" inputmode="numeric" dir="ltr" maxlength="11" pattern="[0-9]*"></div>
+          <div class="f"><label for="email">آدرس ایمیل</label><input id="email" type="email" required placeholder="ali@example.com" dir="ltr" class="ltr-field"></div>
+          <div class="f"><label for="age">سن شما</label><input id="age" type="number" min="1" max="120" required placeholder="مثلاً ۲۵" inputmode="numeric"></div>
+        </div>
+        <div class="cal" id="cal" aria-label="تقویم نوبت‌ها">
+          <div class="cal-t" id="calTitle"></div>
+          <div class="cal-w"><span>شنبه</span><span>یکشنبه</span><span>دوشنبه</span><span>سه‌شنبه</span><span>چهارشنبه</span><span>پنجشنبه</span></div>
+          <div class="cal-g" id="calGrid"></div>
+        </div>
+        <div class="bf-grid">
+          <div class="f"><label for="service">خدمات مورد نظر</label>
+            <select id="service" required>
+              <option value="" disabled selected>انتخاب کنید</option>
+              <option value="اصلاح موی سر">اصلاح موی سر</option>
+              <option value="اصلاح ریش">اصلاح ریش</option>
+              <option value="رنگ و لایت">رنگ و لایت</option>
+              <option value="فرم و سشوار">فر و سشوار</option>
+              <option value="پیرایش داماد">پیرایش داماد</option>
+              <option value="پاکسازی پوست">پاکسازی پوست</option>
+            </select></div>
+          <div class="f"><label for="provider">اجراکننده خدمات</label>
+            <select id="provider"><option value="">انتخاب کنید</option></select></div>
+        </div>
+        <div class="cost"><span>هزینه خدمات</span><b id="cost">—</b></div>
+        <button class="btn btn-gold" type="submit">تایید و پرداخت</button>
+        <div class="ok" id="ok">نوبت شما ثبت شد. منتظرتون هستیم!</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="f-about">
+        
+        <div class="f-text">
+        <h4>آرایشگاه سرچین</h4>
+        <p>آرایشگاه سرچین با بیش از یک دهه تجربه، خدمات اصلاح مو و ریش رو با بالاترین استانداردهای بهداشتی ارائه می‌کند.
+          هر خدمت با ابزار استریل‌شده و توسط آرایشگرهای حرفه‌ای و مجرب انجام می‌شود.
+          هدف ما نه یک مدل تکراری، بلکه طراحی ظاهری متناسب با فرم صورت و سلیقه‌ی هر مشتریست. <span class="soc-in"><a href="#" aria-label="تلگرام"><img src="icon-telegram-paper.png" alt="تلگرام"></a><a href="#" aria-label="وب‌سایت"><img src="icon-web-paper.png" alt="وب‌سایت"></a><a href="#" aria-label="اینستاگرام"><img src="icon-instagram-paper.png" alt="اینستاگرام"></a></span></p>
+        </div>
+      </div>
+      <div class="f-quick"><h4>دسترسی سریع</h4><a href="#home">خانه</a><a href="#services">خدمات ما</a><a href="#booking">رزرو نوبت</a><a href="#about">درباره ما</a></div>
+      <div class="f-contact">
+        <h4>تماس با ما</h4>
+        <p class="addr-line">کرج، خ برغان، خیابان گل‌محمدی</p>
+        <p class="phone-line"><span dir="ltr">۰۹۰۵۵۰۲۳۹۹۹</span></p>
+        <p class="phone-line"><span dir="ltr">۰۲۶۳۲۵۰۱۹۱۵</span></p>
+      </div>
+    </div>
+    
+    <div class="trust-block">
+      <p> </p>
+      <div class="trustrow">
+      
+        <div class="trust"><img src="enamad.png"  class="namad" ></div>
+        <div class="trust"><img src="samandehi.png" class="namad"></div>
+      </div>
+    </div>
+    <div class="bottom"><span> ۱۴۰۵ آرایشگاه سرچین — کلیه حقوق محفوظ است.</span><span></span></div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box">
+    <button class="modal-close" id="authClose" type="button" aria-label="بستن">×</button>
+
+    <div class="modal-steps">
+      <span class="step-dot active" data-step="1"></span>
+      <span class="step-dot" data-step="2"></span>
+      <span class="step-dot" data-step="3"></span>
+    </div>
+
+    <div class="modal-step active" data-step="1">
+      <h3>ورود / ثبت‌نام</h3>
+      <p class="sub">برای رزرو نوبت، مشخصاتتون رو وارد کنید</p>
+      <label for="authName">نام و نام خانوادگی</label>
+      <input id="authName" placeholder="مثلاً علی رضایی">
+      <div class="modal-error" id="authNameErr">لطفاً نام و نام خانوادگی رو وارد کنید</div>
+      <div class="modal-actions"><button class="btn btn-gold" id="toStep2" type="button">ادامه</button></div>
+    </div>
+
+    <div class="modal-step" data-step="2">
+      <h3>شماره تماس</h3>
+      <p class="sub">کد تایید به این شماره پیامک می‌شه</p>
+      <label for="authPhone">شماره موبایل</label>
+      <input id="authPhone" class="ltr-field" dir="ltr" inputmode="numeric" maxlength="11" pattern="[0-9]*" placeholder="09xxxxxxxxx">
+      <div class="modal-error" id="authPhoneErr">شماره موبایل معتبر نیست</div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="toStep1" type="button">بازگشت</button>
+        <button class="btn btn-gold" id="toStep3" type="button">ارسال کد</button>
+      </div>
+    </div>
+
+    <div class="modal-step" data-step="3">
+      <h3>کد تایید</h3>
+      <p class="sub" id="otpSubText">کد ۴ رقمی ارسال‌شده رو وارد کنید</p>
+      <div class="otp-row" dir="ltr">
+        <input class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]*">
+        <input class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]*">
+        <input class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]*">
+        <input class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]*">
+      </div>
+      <div class="modal-error" id="authOtpErr">کد وارد شده صحیح نیست</div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="toStep2b" type="button">بازگشت</button>
+        <button class="btn btn-gold" id="verifyOtp" type="button">تایید و ورود</button>
+      </div>
+    </div>
+
+    <div class="modal-success" id="authSuccess">
+      <div class="ok-icon">✓</div>
+      <p style="font-weight:800;margin:0 0 4px">خوش اومدید!</p>
+      <p style="color:var(--muted);font-size:13px;margin:0">ورود شما با موفقیت انجام شد</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// شمارنده‌ی ورود برای اعداد بخش آمار
+function animateStats(){
+  const items=[...document.querySelectorAll('.hero-stats li')];
+  items.forEach((li,index)=>{
+    const b=li.querySelector('b');
+    if(!b) return;
+    const raw=b.textContent.trim();
+    const digits=raw.replace(/[^۰-۹0-9]/g,'');
+    const target=parseInt(digits.replace(/[۰-۹]/g,d=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))),10);
+    if(Number.isNaN(target)) return;
+    const prefix=raw.startsWith('+')?' +'.trim():'';
+    const plus=raw.includes('+');
+    b.textContent=(plus?'+':'')+'۰';
+    setTimeout(()=>{
+      li.classList.add('counter-ready');
+      setTimeout(()=>{
+        const start=performance.now(),duration=1200;
+        const tick=(now)=>{
+          const p=Math.min((now-start)/duration,1), eased=1-Math.pow(1-p,3);
+          const n=Math.round(target*eased);
+          const fa=String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+          b.textContent=(plus?'+':'')+fa;
+          if(p<1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      },650);
+    },index*180);
+  });
+}
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',animateStats); else animateStats();
+
+// ورود متن آرایشگاه سرچین و دکمه‌های رزرو/مشاهده خدمات، هم‌سبک با باکس‌های آمار
+function animateHeroIntro(){
+  const title=document.querySelector('.hero h1');
+  const ctas=[...document.querySelectorAll('.hero-cta .btn')];
+  if(title) setTimeout(()=>title.classList.add('reveal-ready'),60);
+  ctas.forEach((btn,i)=>setTimeout(()=>btn.classList.add('reveal-ready'),160+i*140));
+}
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',animateHeroIntro); else animateHeroIntro();
+
+/* ---- اصلاح لندینگ اولیه وقتی آدرس با # باز میشه (مثلاً #about) ---- */
+(function(){
+  function fixHashScroll(){
+    if(!location.hash) return;
+    const target=document.querySelector(location.hash);
+    if(!target) return;
+    const y=target.getBoundingClientRect().top+window.pageYOffset-14;
+    window.scrollTo(0,Math.max(y,0));
+  }
+  window.addEventListener('load',()=>{setTimeout(fixHashScroll,60);setTimeout(fixHashScroll,350)});
+})();
+
+/* ---- تقویم ماه جاری (شمسی): شنبه تا پنجشنبه، همه خط‌خورده ---- */
+(function(){
+  const grid=document.getElementById('calGrid'),title=document.getElementById('calTitle');
+  let cells=[],pad=0,label='مهر ۱۴۰۵';
+  try{
+    const fa=n=>n.toLocaleString('fa-IR',{useGrouping:false});
+    const fmt=new Intl.DateTimeFormat('en-u-ca-persian',{month:'numeric',day:'numeric'});
+    const pp=dt=>{const o={};fmt.formatToParts(dt).forEach(x=>o[x.type]=+x.value);return o};
+    const t=new Date();t.setHours(12,0,0,0);
+    const p0=pp(t),first=new Date(t);first.setDate(t.getDate()-(p0.day-1));
+    const cur=new Date(first);
+    for(let i=0;i<32&&pp(cur).month===p0.month;i++){cells.push({idx:(cur.getDay()+1)%7,d:pp(cur).day});cur.setDate(cur.getDate()+1)}
+    pad=cells[0].idx===6?0:cells[0].idx;
+    cells=cells.filter(c=>c.idx!==6).map(c=>fa(c.d));
+    const lp={};new Intl.DateTimeFormat('fa-IR-u-ca-persian',{month:'long',year:'numeric'}).formatToParts(t).forEach(x=>lp[x.type]=x.value);label=lp.month+' '+lp.year;
+  }catch(e){
+    pad=4;cells=[];for(let d=1;d<=30;d++){if(![3,10,17,24].includes(d))cells.push(String(d).replace(/\d/g,x=>'۰۱۲۳۴۵۶۷۸۹'[x]))}
+  }
+  title.textContent=label;
+  for(let i=0;i<pad;i++)grid.appendChild(Object.assign(document.createElement('i'),{className:'e'}));
+  cells.forEach(t=>{const i=document.createElement('i');i.textContent=t;grid.appendChild(i)});
+})();
+
+/* ---- هزینه‌ی خدمات ---- */
+const prices={'اصلاح موی سر':'از ۲۵۰ هزار تومان','اصلاح ریش':'از ۱۸۰ هزار تومان','رنگ و لایت':'از ۴۵۰ هزار تومان','پیرایش داماد':'از ۹۰۰ هزار تومان'};
+document.getElementById('service').addEventListener('change',e=>{document.getElementById('cost').textContent=prices[e.target.value]||'—'});
+const formEl=document.getElementById('bookform');
+
+/* ---- کاروسل عمومی (برای بخش «درباره سرچین» و «نظرات مشتریان») ---- */
+function makeCarousel({slides,dotsEl,wheelEl,dotLabel}){
+  const count=slides.length;
+  let index=0;
+  if(!count)return;
+
+
+  function render(){
+    slides.forEach((slide,i)=>{
+      const diff=(i-index+count)%count;
+      let pos='hidden';
+      if(diff===0)pos='center';else if(diff===1)pos='right';else if(diff===count-1)pos='left';
+      slide.dataset.pos=pos;
+    });
+  }
+  render();
+
+  const next=()=>{index=(index+1)%count;render()};
+  const prev=()=>{index=(index-1+count)%count;render()};
+  slides.forEach(slide=>{slide.addEventListener('click',()=>{const pos=slide.dataset.pos;if(pos==='left')prev();else if(pos==='right')next()})});
+
+  if(wheelEl){
+    let wheelLock=false;
+    wheelEl.addEventListener('wheel',e=>{
+      e.preventDefault();
+      if(wheelLock)return;
+      const delta=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;
+      if(Math.abs(delta)<12)return;
+      wheelLock=true;
+      if(delta>0)next();else prev();
+      setTimeout(()=>wheelLock=false,420);
+    },{passive:false});
+
+    let touchStartX=null;
+    wheelEl.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX},{passive:true});
+    wheelEl.addEventListener('touchend',e=>{
+      if(touchStartX===null)return;
+      const dx=e.changedTouches[0].clientX-touchStartX;
+      if(Math.abs(dx)>40){if(dx<0)next();else prev()}
+      touchStartX=null;
+    });
+  }
+}
+
+makeCarousel({
+  slides:[...document.querySelectorAll('.car-slide')],
+  wheelEl:document.getElementById('carViewport'),
+  dotLabel:'تصویر'
+});
+
+const phoneInput=document.getElementById('phone');
+phoneInput.addEventListener('input',()=>{phoneInput.value=phoneInput.value.replace(/[^0-9]/g,'')});
+
+formEl.addEventListener('submit',e=>{e.preventDefault();document.getElementById('ok').style.display='block'});
+
+/* ---- Auth modal (ورود / ثبت‌نام) ---- */
+const authModal=document.getElementById('authModal');
+const stepDots=[...document.querySelectorAll('.step-dot')];
+const modalSteps=[...document.querySelectorAll('.modal-step')];
+const authSuccess=document.getElementById('authSuccess');
+
+document.getElementById('authClose').addEventListener('click',closeAuthModal);
+authModal.addEventListener('click',e=>{if(e.target===authModal)closeAuthModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAuthModal()});
+
+function openAuthModal(){
+  authModal.classList.add('open');
+  document.body.style.overflow='hidden';
+  authSuccess.style.display='none';
+  document.querySelector('.modal-steps').style.display='flex';
+  modalSteps.forEach(s=>s.style.display='');
+  goStep(1);
+  document.getElementById('authName').value='';
+  document.getElementById('authPhone').value='';
+  document.querySelectorAll('.otp-digit').forEach(d=>d.value='');
+  document.querySelectorAll('.modal-error').forEach(el=>el.style.display='none');
+}
+function closeAuthModal(){authModal.classList.remove('open');document.body.style.overflow=''}
+function goStep(n){
+  modalSteps.forEach(s=>s.classList.toggle('active',+s.dataset.step===n));
+  stepDots.forEach(d=>d.classList.toggle('active',+d.dataset.step<=n));
+}
+
+document.getElementById('toStep2').onclick=()=>{
+  const v=document.getElementById('authName').value.trim();
+  document.getElementById('authNameErr').style.display=v?'none':'block';
+  if(!v)return;
+  goStep(2);
+};
+document.getElementById('toStep1').onclick=()=>goStep(1);
+document.getElementById('toStep2b').onclick=()=>goStep(2);
+
+const authPhone=document.getElementById('authPhone');
+authPhone.addEventListener('input',()=>{authPhone.value=authPhone.value.replace(/[^0-9]/g,'').slice(0,11)});
+
+document.getElementById('toStep3').onclick=()=>{
+  const v=authPhone.value;
+  const ok=/^09[0-9]{9}$/.test(v);
+  document.getElementById('authPhoneErr').style.display=ok?'none':'block';
+  if(!ok)return;
+  document.getElementById('otpSubText').textContent='کد ۴ رقمی ارسال‌شده به '+v+' رو وارد کنید';
+  goStep(3);
+  setTimeout(()=>document.querySelector('.otp-digit').focus(),50);
+};
+
+const otpDigits=[...document.querySelectorAll('.otp-digit')];
+otpDigits.forEach((inp,i)=>{
+  inp.addEventListener('input',()=>{
+    inp.value=inp.value.replace(/[^0-9]/g,'').slice(0,1);
+    if(inp.value && otpDigits[i+1])otpDigits[i+1].focus();
+  });
+  inp.addEventListener('keydown',e=>{
+    if(e.key==='Backspace' && !inp.value && otpDigits[i-1]){otpDigits[i-1].focus()}
+  });
+});
+
+document.getElementById('verifyOtp').onclick=()=>{
+  const code=otpDigits.map(d=>d.value).join('');
+  const ok=code.length===4;
+  document.getElementById('authOtpErr').style.display=ok?'none':'block';
+  if(!ok)return;
+  modalSteps.forEach(s=>s.style.display='none');
+  document.querySelector('.modal-steps').style.display='none';
+  setUser(document.getElementById('authName').value.trim());
+  authSuccess.style.display='block';
+  setTimeout(closeAuthModal,1600);
+};
+
+/* ---- Header ---- */
+const hdr=document.getElementById('siteHeader'),navToggle=document.getElementById('navToggle'),
+      navBackdrop=document.getElementById('navBackdrop');
+const mobileMQ=window.matchMedia('(max-width:860px)');
+function closeSubs(except){document.querySelectorAll('.has-sub').forEach(li=>{if(li!==except){li.classList.remove('open');const b=li.querySelector(':scope>button');if(b)b.setAttribute('aria-expanded','false')}})}
+function setNav(open){document.body.classList.toggle('nav-open',open);navToggle.setAttribute('aria-expanded',open);if(!open)closeSubs()}
+navToggle.onclick=()=>setNav(!document.body.classList.contains('nav-open'));
+navBackdrop.onclick=()=>setNav(false);
+document.querySelectorAll('.has-sub>button').forEach(b=>b.addEventListener('click',e=>{
+  if(b.id==='acctBtn'&&!getUser()){setNav(false);openAuthModal();return}
+  const li=b.parentElement,open=!li.classList.contains('open');
+  closeSubs(li);li.classList.toggle('open',open);b.setAttribute('aria-expanded',open);e.stopPropagation();
+}));
+document.addEventListener('click',()=>closeSubs());
+document.querySelectorAll('.main-nav a').forEach(a=>a.addEventListener('click',()=>{closeSubs();setNav(false)}));
+mobileMQ.addEventListener('change',()=>setNav(false));
+window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>10),{passive:true});
+/* service cards -> preselect service in booking form */
+document.querySelectorAll('.svc-card').forEach(c=>c.addEventListener('click',()=>{const s=document.getElementById('service');if(s){s.value=c.dataset.service;s.dispatchEvent(new Event('change'))}}));
+
+/* ---- Logged-in user ---- */
+function getUser(){try{return localStorage.getItem('sarchin_user')||''}catch(e){return ''}}
+function setUser(n){try{n?localStorage.setItem('sarchin_user',n):localStorage.removeItem('sarchin_user')}catch(e){}renderUser()}
+function renderUser(){
+  const n=getUser(),btn=document.getElementById('acctBtn');
+  document.getElementById('acctLabel').textContent=n||'ورود / ثبت‌نام';
+  const av=document.getElementById('acctAv');av.hidden=!n;av.textContent=n?[...n][0]:'';
+  document.querySelector('.acct-caret').hidden=!n;
+  document.getElementById('acctMenu').hidden=!n;
+  btn.classList.toggle('logged',!!n);
+  if(!n)document.querySelector('.acct').classList.remove('open');
+  const nameInput=document.getElementById('name');if(n&&nameInput&&!nameInput.value)nameInput.value=n;
+}
+document.getElementById('logoutBtn').onclick=()=>{setUser('');setNav(false)};
+renderUser();
+/* ورود از صفحه محصول: index.html?login=1 */
+try{if(new URLSearchParams(location.search).get('login')==='1'&&!getUser()){openAuthModal();history.replaceState(null,'',location.pathname+location.hash)}}catch(e){}
+
+</script>
+
+<script src="products.js"></script>
+<script src="cart.js"></script>
+</body>
+</html>

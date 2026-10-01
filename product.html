@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#171310">
+  <title>محصول | آرایشگاه مردانه سرچین</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="hdrMount" data-cart="1"></div>
+
+<main class="pp">
+  <div class="wrap">
+    <nav class="crumb" aria-label="مسیر صفحه"><a href="index.html">خانه</a><span>›</span><a href="index.html#products">محصولات</a><span>›</span><b id="crumbName">...</b></nav>
+    <div id="pBox"></div>
+    <section class="pp-sim" id="pSim" hidden>
+      <h2 class="mc-heading">محصولات مشابه</h2>
+      <div class="prod-row" id="pSimRow"></div>
+    </section>
+  </div>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="f-about">
+        
+        <div class="f-text">
+        <h4>آرایشگاه سرچین</h4>
+        <p>آرایشگاه سرچین با بیش از یک دهه تجربه، خدمات اصلاح مو و ریش رو با بالاترین استانداردهای بهداشتی ارائه می‌کند.
+          هر خدمت با ابزار استریل‌شده و توسط آرایشگرهای حرفه‌ای و مجرب انجام می‌شود.
+          هدف ما نه یک مدل تکراری، بلکه طراحی ظاهری متناسب با فرم صورت و سلیقه‌ی هر مشتریست. <span class="soc-in"><a href="index.html#" aria-label="تلگرام"><img src="icon-telegram-paper.png" alt="تلگرام"></a><a href="index.html#" aria-label="وب‌سایت"><img src="icon-web-paper.png" alt="وب‌سایت"></a><a href="index.html#" aria-label="اینستاگرام"><img src="icon-instagram-paper.png" alt="اینستاگرام"></a></span></p>
+        </div>
+      </div>
+      <div class="f-quick"><h4>دسترسی سریع</h4><a href="index.html#home">خانه</a><a href="index.html#services">خدمات ما</a><a href="index.html#booking">رزرو نوبت</a><a href="index.html#about">درباره ما</a></div>
+      <div class="f-contact">
+        <h4>تماس با ما</h4>
+        <p class="addr-line">کرج، خ برغان، خیابان گل‌محمدی</p>
+        <p class="phone-line"><span dir="ltr">۰۹۰۵۵۰۲۳۹۹۹</span></p>
+        <p class="phone-line"><span dir="ltr">۰۲۶۳۲۵۰۱۹۱۵</span></p>
+      </div>
+    </div>
+    
+    <div class="trust-block">
+      <p> </p>
+      <div class="trustrow">
+      
+        <div class="trust"><img src="enamad.png"  class="namad" ></div>
+        <div class="trust"><img src="samandehi.png" class="namad"></div>
+      </div>
+    </div>
+    <div class="bottom"><span> ۱۴۰۵ آرایشگاه سرچین — کلیه حقوق محفوظ است.</span><span></span></div>
+  </div>
+</footer>
+
+<script src="products.js"></script>
+<script src="header.js"></script>
+<script src="cart.js"></script>
+<script>
+(function(){
+const P=window.SARCHIN_PRODUCTS,MAX=9;
+const fa=n=>(+n).toLocaleString('fa-IR');
+const fmt=n=>fa(n)+' تومان';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const id=new URLSearchParams(location.search).get('id');
+const p=P.find(x=>x.id===id);
+const box=document.getElementById('pBox');
+if(!p){
+  document.getElementById('crumbName').textContent='یافت نشد';
+  box.innerHTML='<div class="pp-404"><h1>محصول پیدا نشد</h1><p>این محصول وجود ندارد یا حذف شده است.</p><a class="pc-add" href="index.html#products">بازگشت به محصولات</a></div>';
+  return;
+}
+document.title=p.name+' | آرایشگاه مردانه سرچین';
+document.getElementById('crumbName').textContent=p.name;
+let qty=1,cur=0;
+box.innerHTML=
+'<div class="pp-grid">'+
+ '<div class="pp-gal"><div class="pp-main"><button type="button" class="pp-zoom" id="ppZoom" aria-label="مشاهده تصویر بزرگ"><img id="ppMain" src="'+esc(p.images[0])+'" alt="'+esc(p.name)+'"></button>'+
+ (p.images.length>1?'<button type="button" class="pp-nav pp-prev" id="ppPrev" aria-label="تصویر قبلی">›</button><button type="button" class="pp-nav pp-next" id="ppNext" aria-label="تصویر بعدی">‹</button><span class="pp-count" id="ppCount"></span>':'')+'</div>'+
+ (p.images.length>1?'<div class="pp-thumbs">'+p.images.map((s,i)=>'<button type="button" class="'+(i?'':'on')+'" data-i="'+i+'" aria-label="تصویر '+fa(i+1)+'"><img src="'+esc(s)+'" alt=""></button>').join('')+'</div>':'')+'</div>'+
+ '<div class="pp-info">'+
+  '<div class="pp-meta"><span class="pp-tag">'+esc(p.catName)+'</span><span class="pp-tag">برند: '+esc(p.brand)+'</span>'+(p.volume?'<span class="pp-tag">'+esc(p.volume)+'</span>':'')+'</div>'+
+  '<h1>'+esc(p.name)+'</h1>'+
+  '<p class="pp-short">'+esc(p.short)+'</p>'+
+  '<ul class="pp-feat">'+p.features.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul>'+
+  '<div class="pp-buybox"><div class="pp-price">'+fmt(p.price)+'</div><div class="pp-buy"><div class="pp-qty"><button type="button" id="qPlus" aria-label="افزودن">+</button><span id="qVal">۱</span><button type="button" id="qMinus" aria-label="کم کردن">−</button></div>'+
+  '<button type="button" class="pp-add" id="ppAdd">افزودن به سبد خرید</button></div></div>'+
+  '<p class="pp-note" id="ppNote"></p>'+
+  '<div class="pp-perks"><div class="pp-perk"><span class="pp-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></span><b>تحویل بعد از ۱ روز کاری</b></div><a class="pp-perk pp-pay" href="https://www.mydigipay.com/" target="_blank" rel="noopener noreferrer"><img src="digipay-icon.png" alt="دیجی‌پی" class="pp-payico"><b>خرید قسطی با دیجی‌پی</b></a></div>'+
+ '</div>'+
+'</div>'+
+'<div class="pp-tabs"><div class="pp-tabbar"><button type="button" class="on" data-t="d">توضیحات</button><button type="button" data-t="s">مشخصات</button></div>'+
+ '<div class="pp-panel" id="tab-d">'+p.desc.map(t=>'<p>'+esc(t)+'</p>').join('')+'</div>'+
+ '<div class="pp-panel" id="tab-s" hidden><table class="pp-specs">'+p.specs.map(r=>'<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td></tr>').join('')+'</table></div></div>';
+
+const note=document.getElementById('ppNote'),qv=document.getElementById('qVal');
+const show=()=>{qv.textContent=fa(qty)};
+document.getElementById('qPlus').onclick=()=>{if(qty<MAX){qty++;show()}else note.textContent='حداکثر '+fa(MAX)+' عدد از هر محصول قابل سفارش است.'};
+document.getElementById('qMinus').onclick=()=>{if(qty>1){qty--;show();note.textContent=''}};
+document.getElementById('ppAdd').onclick=()=>{
+  const r=window.SarchinCart.add(p.id,qty);
+  if(!r.added)note.textContent='حداکثر '+fa(MAX)+' عدد از این محصول در سبد شماست.';
+  else if(r.added<qty)note.textContent='فقط '+fa(r.added)+' عدد اضافه شد؛ حداکثر '+fa(MAX)+' عدد مجاز است.';
+  else note.textContent='به سبد خرید اضافه شد ✓';
+};
+const imgs=p.images,N=imgs.length,mainImg=document.getElementById('ppMain'),cnt=document.getElementById('ppCount');
+function setCur(i){
+  cur=(i+N)%N;mainImg.src=imgs[cur];
+  box.querySelectorAll('.pp-thumbs button').forEach((x,k)=>x.classList.toggle('on',k===cur));
+  if(cnt)cnt.textContent=fa(cur+1)+' / '+fa(N);
+  lbSync();
+}
+box.querySelectorAll('.pp-thumbs button').forEach(b=>b.onclick=()=>setCur(+b.dataset.i));
+if(N>1){document.getElementById('ppPrev').onclick=()=>setCur(cur-1);document.getElementById('ppNext').onclick=()=>setCur(cur+1);}
+/* حالت نمایش بزرگ (لایت‌باکس) */
+const lb=document.createElement('div');lb.className='lb';lb.hidden=true;
+lb.innerHTML='<div class="lb-top"><span class="lb-count"></span><button type="button" class="lb-x" aria-label="بستن">×</button></div><div class="lb-stage">'+(N>1?'<button type="button" class="lb-nav lb-prev" aria-label="تصویر قبلی">›</button>':'')+'<img class="lb-img" alt="'+esc(p.name)+'">'+(N>1?'<button type="button" class="lb-nav lb-next" aria-label="تصویر بعدی">‹</button>':'')+'</div>'+(N>1?'<div class="lb-thumbs">'+imgs.map((s,i)=>'<button type="button" data-i="'+i+'" aria-label="تصویر '+fa(i+1)+'"><img src="'+esc(s)+'" alt=""></button>').join('')+'</div>':'');
+document.body.appendChild(lb);
+const lbImg=lb.querySelector('.lb-img'),lbCount=lb.querySelector('.lb-count');
+function lbSync(){if(lb.hidden)return;lbImg.src=imgs[cur];lbCount.textContent=fa(cur+1)+' / '+fa(N);lb.querySelectorAll('.lb-thumbs button').forEach((x,k)=>x.classList.toggle('on',k===cur))}
+function lbOpen(){lb.hidden=false;document.body.style.overflow='hidden';lbSync()}
+function lbClose(){lb.hidden=true;document.body.style.overflow=''}
+document.getElementById('ppZoom').onclick=lbOpen;
+lb.querySelector('.lb-x').onclick=lbClose;
+lb.querySelector('.lb-stage').addEventListener('click',e=>{if(e.target.classList.contains('lb-stage'))lbClose()});
+if(N>1){lb.querySelector('.lb-prev').onclick=()=>setCur(cur-1);lb.querySelector('.lb-next').onclick=()=>setCur(cur+1);
+lb.querySelectorAll('.lb-thumbs button').forEach(b=>b.onclick=()=>setCur(+b.dataset.i));}
+document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')lbClose();else if(N>1&&e.key==='ArrowLeft')setCur(cur+1);else if(N>1&&e.key==='ArrowRight')setCur(cur-1)});
+let tx=null;lb.querySelector('.lb-stage').addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+lb.querySelector('.lb-stage').addEventListener('touchend',e=>{if(tx===null||N<2)return;const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)setCur(cur+(d<0?1:-1));tx=null});
+setCur(0);
+box.querySelectorAll('.pp-tabbar button').forEach(b=>b.onclick=()=>{
+  box.querySelectorAll('.pp-tabbar button').forEach(x=>x.classList.toggle('on',x===b));
+  document.getElementById('tab-d').hidden=b.dataset.t!=='d';
+  document.getElementById('tab-s').hidden=b.dataset.t!=='s';
+});
+
+/* محصولات مشابه: هم‌دسته‌ها اول، بعد بقیه */
+const others=P.filter(x=>x.id!==p.id);
+const sim=others.filter(x=>x.cat===p.cat).concat(others.filter(x=>x.cat!==p.cat)).slice(0,4);
+document.getElementById('pSimRow').innerHTML=sim.map(x=>{
+  const href='product.html?id='+x.id;
+  return '<div class="prod-card"><a class="pc-link" href="'+href+'"><div class="pc-img"><img src="'+esc(x.images[0])+'" alt="'+esc(x.name)+'" loading="lazy"></div></a><h3><a href="'+href+'">'+esc(x.name)+'</a></h3><span class="pc-v">'+(x.volume?esc(x.volume):'&nbsp;')+'</span><div class="pc-price">'+fmt(x.price)+'</div><button class="pc-add" type="button" data-add="'+x.id+'">افزودن به سبد</button></div>';
+}).join('');
+document.getElementById('pSim').hidden=!sim.length;
+})();
+</script>
+</body>
+</html>
