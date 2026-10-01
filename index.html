@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#171310">
   <title>آرایشگاه سرچین</title>
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -325,27 +325,66 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
   window.addEventListener('load',()=>{setTimeout(fixHashScroll,60);setTimeout(fixHashScroll,350)});
 })();
 
-/* ---- تقویم ماه جاری (شمسی): شنبه تا پنجشنبه، همه خط‌خورده ---- */
+/* ---- تقویم رزرو (شمسی، به‌وقت تهران): بازه‌ی رزرو = ۳۰ روز از امروز؛ روزهای گذشته بسته؛ امروز از ساعت ۲۱ به بعد بسته ---- */
 (function(){
   const grid=document.getElementById('calGrid'),title=document.getElementById('calTitle');
-  let cells=[],pad=0,label='مهر ۱۴۰۵';
-  try{
-    const fa=n=>n.toLocaleString('fa-IR',{useGrouping:false});
-    const fmt=new Intl.DateTimeFormat('en-u-ca-persian',{month:'numeric',day:'numeric'});
-    const pp=dt=>{const o={};fmt.formatToParts(dt).forEach(x=>o[x.type]=+x.value);return o};
-    const t=new Date();t.setHours(12,0,0,0);
-    const p0=pp(t),first=new Date(t);first.setDate(t.getDate()-(p0.day-1));
-    const cur=new Date(first);
-    for(let i=0;i<32&&pp(cur).month===p0.month;i++){cells.push({idx:(cur.getDay()+1)%7,d:pp(cur).day});cur.setDate(cur.getDate()+1)}
-    pad=cells[0].idx===6?0:cells[0].idx;
-    cells=cells.filter(c=>c.idx!==6).map(c=>fa(c.d));
-    const lp={};new Intl.DateTimeFormat('fa-IR-u-ca-persian',{month:'long',year:'numeric'}).formatToParts(t).forEach(x=>lp[x.type]=x.value);label=lp.month+' '+lp.year;
-  }catch(e){
-    pad=4;cells=[];for(let d=1;d<=30;d++){if(![3,10,17,24].includes(d))cells.push(String(d).replace(/\d/g,x=>'۰۱۲۳۴۵۶۷۸۹'[x]))}
+  const CLOSE_HOUR=21,TZ='Asia/Tehran',WINDOW=30,MAX_OFFSET=1;
+  const fa=n=>(+n).toLocaleString('fa-IR',{useGrouping:false});
+  const pf=new Intl.DateTimeFormat('en-u-ca-persian',{timeZone:'UTC',year:'numeric',month:'numeric',day:'numeric'});
+  const pp=dt=>{const o={};pf.formatToParts(dt).forEach(x=>{if(x.type!=='literal')o[x.type]=parseInt(x.value,10)});return o};
+  const monthName=dt=>{const o={};new Intl.DateTimeFormat('fa-IR-u-ca-persian',{timeZone:'UTC',month:'long',year:'numeric'}).formatToParts(dt).forEach(x=>o[x.type]=x.value);return o.month+' '+o.year};
+  const ARW={l:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',
+             r:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>'};
+  function nowTehran(){
+    const o={};new Intl.DateTimeFormat('en-US',{timeZone:TZ,year:'numeric',month:'numeric',day:'numeric',hour:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(x=>{if(x.type!=='literal')o[x.type]=parseInt(x.value,10)});
+    return{date:new Date(Date.UTC(o.year,o.month-1,o.day,12)),hour:o.hour};
   }
-  title.textContent=label;
-  for(let i=0;i<pad;i++)grid.appendChild(Object.assign(document.createElement('i'),{className:'e'}));
-  cells.forEach(t=>{const i=document.createElement('i');i.textContent=t;grid.appendChild(i)});
+  /* ساخت خانه‌های یک ماه (offset: ۰ = ماه جاری، ۱ = ماه بعد) */
+  function build(offset,today,hour){
+    const tp=pp(today);
+    let first=new Date(today);first.setUTCDate(today.getUTCDate()-(tp.day-1));
+    if(offset){const c=new Date(first);do{c.setUTCDate(c.getUTCDate()+1)}while(pp(c).month===tp.month);first=c}
+    const fp=pp(first),cells=[],cur=new Date(first);
+    while(pp(cur).month===fp.month){
+      const d=pp(cur).day,idx=(cur.getUTCDay()+1)%7; /* شنبه=۰ ... جمعه=۶ */
+      if(idx!==6){
+        const diff=Math.round((cur-today)/86400000); /* فاصله از امروز به روز */
+        const closed=diff<0||(diff===0&&hour>=CLOSE_HOUR)||diff>=WINDOW;
+        cells.push({idx,d,key:fp.year+'-'+fp.month+'-'+d,closed});
+      }
+      cur.setUTCDate(cur.getUTCDate()+1);
+    }
+    return{first,fp,cells};
+  }
+  let offset=0,selected=null;
+  window.getBookingDate=()=>selected;
+  function render(){
+    const {date:today,hour}=nowTehran();
+    const nextM=build(1,today,hour),hasNext=nextM.cells.some(c=>!c.closed);
+    if(!hasNext)offset=0;
+    const m=offset?nextM:build(0,today,hour),cells=m.cells,first=m.first,fp=m.fp;
+    if(selected&&selected.key.split('-')[1]==fp.month&&!cells.some(c=>c.key===selected.key&&!c.closed))selected=null;
+    title.innerHTML=(offset===0&&hasNext?'<button type="button" class="cal-nav cal-next" data-n="1" aria-label="ماه بعد">'+ARW.l+'</button>':'')+
+      (offset>0?'<button type="button" class="cal-nav cal-prev" data-n="0" aria-label="ماه قبل">'+ARW.r+'</button>':'')+
+      '<span>'+monthName(first)+'</span>';
+    grid.innerHTML='';
+    for(let i=0;i<cells[0].idx;i++)grid.appendChild(Object.assign(document.createElement('i'),{className:'e'}));
+    cells.forEach(c=>{
+      const el=document.createElement('i');el.textContent=fa(c.d);
+      if(c.closed){el.className='x';el.setAttribute('aria-disabled','true')}
+      else{
+        el.className='ok-d'+(selected&&selected.key===c.key?' sel':'');el.tabIndex=0;el.setAttribute('role','button');
+        const pick=()=>{selected={key:c.key,label:fa(c.d)+' '+monthName(first).split(' ')[0]};const er=document.getElementById('calErr');if(er)er.style.display='none';render()};
+        el.onclick=pick;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}};
+      }
+      grid.appendChild(el);
+    });
+  }
+  title.addEventListener('click',e=>{const b=e.target.closest('.cal-nav');if(!b)return;offset=b.dataset.n==='1'?1:0;render()});
+  const err=document.createElement('div');err.id='calErr';err.className='cal-err';err.textContent='لطفاً یک روز برای نوبت انتخاب کنید.';
+  document.getElementById('cal').after(err);
+  render();
+  setInterval(render,60000); /* بسته شدن خودکار روز، ساعت ۲۱ و تغییر ماه/روز بعد از نیمه‌شب */
 })();
 
 /* ---- هزینه‌ی خدمات ---- */
@@ -406,7 +445,12 @@ makeCarousel({
 const phoneInput=document.getElementById('phone');
 phoneInput.addEventListener('input',()=>{phoneInput.value=phoneInput.value.replace(/[^0-9]/g,'')});
 
-formEl.addEventListener('submit',e=>{e.preventDefault();document.getElementById('ok').style.display='block'});
+formEl.addEventListener('submit',e=>{
+  e.preventDefault();
+  const sel=window.getBookingDate&&window.getBookingDate(),ok=document.getElementById('ok'),er=document.getElementById('calErr');
+  if(!sel){ok.style.display='none';if(er){er.style.display='block';document.getElementById('cal').scrollIntoView({behavior:'smooth',block:'center'})}return}
+  ok.textContent='نوبت شما برای '+sel.label+' ثبت شد. منتظرتون هستیم!';ok.style.display='block';
+});
 
 /* ---- Auth modal (ورود / ثبت‌نام) ---- */
 const authModal=document.getElementById('authModal');
